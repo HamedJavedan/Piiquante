@@ -1,16 +1,15 @@
-//0OMl91O51VWERILs
-//mongodb+srv://Hamed:<password>@cluster0.0oy7v.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser =  require("body-parser");
 const path = require('path')
+require('dotenv').config();
 
 const sauceRoutes = require('./routes/sauce')
 const userRoutes = require('./routes/user')
 
 const app = express();
 
-mongoose.connect('mongodb+srv://Hamed:0OMl91O51VWERILs@cluster0.0oy7v.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+mongoose.connect(process.env.MONGODB_URL)
     .then(() => {
         console.log('successfully connected to MongoDB Atlas!');
     })
