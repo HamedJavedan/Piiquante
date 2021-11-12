@@ -1,4 +1,5 @@
 const express = require('express');
+const helmet = require("helmet");
 const mongoose = require('mongoose');
 const bodyParser =  require("body-parser");
 const path = require('path')
@@ -8,6 +9,7 @@ const sauceRoutes = require('./routes/sauce')
 const userRoutes = require('./routes/user')
 
 const app = express();
+app.use(helmet());
 
 mongoose.connect(process.env.MONGODB_URL)
     .then(() => {
